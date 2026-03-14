@@ -7,6 +7,7 @@ public class ServerMetrics {
     private  DiskMetrics disk ;
     private  MemoryMetrics memory ;
     private  LoadAverageMetrics loadAverage ;
+    private NetworkMetrcis networkMetrcis ;
     private  long collectionTime ;
 
     public ServerMetrics() {
@@ -36,6 +37,10 @@ public class ServerMetrics {
         this.loadAverage = loadAverage;
     }
 
+    public void setNetworkMetrcis(NetworkMetrcis networkMetrcis) {
+        this.networkMetrcis = networkMetrcis;
+    }
+
     public void setCollectionTime(long collectionTime) {
         this.collectionTime = collectionTime;
     }
@@ -59,5 +64,10 @@ public class ServerMetrics {
     public long getCollectionTime() {
         return collectionTime;
     }
+
+    public NetworkMetrcis getNetworkMetrcis() {
+        return networkMetrcis;
+    }
+
 
 }
