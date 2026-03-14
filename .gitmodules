@@ -1,6 +1,0 @@
-[submodule "watchcow-injector"]
-	path = watchcow-injector
-	url = https://github.com/jagat-banera/watchcow-injector.git
-[submodule "watchcow-consumer"]
-	path = watchcow-consumer
-	url = https://github.com/jagat-banera/watchcow-consumer.git
