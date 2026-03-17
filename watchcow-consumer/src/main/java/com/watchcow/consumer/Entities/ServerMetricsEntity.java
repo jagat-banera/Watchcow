@@ -1,9 +1,7 @@
 package com.watchcow.consumer.Entities;
 
 import com.watchcow.consumer.DTOs.ServerMetrics;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.Instant;
 
@@ -13,10 +11,15 @@ import java.time.Instant;
 public class ServerMetricsEntity {
 
     // ID
-    @EmbeddedId
-    private ServerMetricsId serverMetricsId ;
-    // Agent Details
+    @Id
+    @GeneratedValue
+    private long id;
 
+    @ManyToOne
+    @JoinTable(name = "event_id")
+    private CollectionEvent event;
+
+    // Agent Details
     private String hostname ;
     private String version ;
 
@@ -39,9 +42,8 @@ public class ServerMetricsEntity {
     public ServerMetricsEntity() {
     }
 
-    public ServerMetricsEntity(ServerMetricsId serverMetricsId , String hostname, String version, double cpuLoad, double totalDiskSpace, double freeDiskSpace, double usedDiskSpace, double totalMemory, double freeMemory, double usedMemory, double loadAverage) {
-
-        this.serverMetricsId = serverMetricsId;
+    public ServerMetricsEntity(CollectionEvent event, String hostname, String version, double cpuLoad, double totalDiskSpace, double freeDiskSpace, double usedDiskSpace, double totalMemory, double freeMemory, double usedMemory, double loadAverage) {
+        this.event = event ;
         this.hostname = hostname;
         this.version = version;
         this.cpuLoad = cpuLoad;

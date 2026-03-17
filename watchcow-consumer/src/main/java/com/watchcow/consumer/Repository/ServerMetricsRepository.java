@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ServerMetricsRepository extends JpaRepository<ServerMetricsEntity, ServerMetricsId> {
+public interface ServerMetricsRepository extends JpaRepository<ServerMetricsEntity, Long> {
 
 }

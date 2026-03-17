@@ -1,22 +1,23 @@
 package com.watchcow.consumer.Utils;
 
 import com.watchcow.consumer.DTOs.ServerMetrics;
+import com.watchcow.consumer.Entities.CollectionEvent;
 import com.watchcow.consumer.Entities.ServerMetricsEntity;
-import com.watchcow.consumer.Entities.ServerMetricsId;
+
 
 import java.time.Instant;
 
 public class DtoToEntityServerMetrics {
 
-    private ServerMetrics serverMetrics ;
 
-    public DtoToEntityServerMetrics(ServerMetrics serverMetrics) {
-        this.serverMetrics = serverMetrics;
+
+    public DtoToEntityServerMetrics() {
+
     }
 
-    public ServerMetricsEntity convert(){
+    public ServerMetricsEntity convert(CollectionEvent event , ServerMetrics serverMetrics) {
         return new ServerMetricsEntity(
-                new ServerMetricsId(serverMetrics.getAgentInfo().getAgentId() , Instant.ofEpochMilli(serverMetrics.getCollectionTime())),
+                event,
                 serverMetrics.getAgentInfo().getHostname(),
                 serverMetrics.getAgentInfo().getVersion(),
                 serverMetrics.getCpu().getCpuLoad(),
